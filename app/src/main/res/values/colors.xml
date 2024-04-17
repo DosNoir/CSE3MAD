@@ -2,6 +2,7 @@
 <resources>
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
+    <color name="default_text_colour">#FDB813</color>
     <color name="txtBx_background">#FDB813</color>
     <color name="txtBx_text">#900C3F</color>
     <color name="button_background">#5C0024</color>
