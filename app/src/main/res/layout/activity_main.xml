@@ -6,8 +6,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".MainActivity"
-    android:background="@drawable/background_main"
-    >
+    android:background="@drawable/background_main">
     <RelativeLayout
         android:id="@+id/layout"
         android:layout_width="match_parent"
@@ -19,8 +18,7 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        >
+        app:layout_constraintTop_toTopOf="parent">
 
         <TextView
             android:id="@+id/textView"
@@ -28,9 +26,7 @@
             android:layout_height="wrap_content"
             android:layout_alignParentTop="true"
             android:text="GIGLE"
-            android:theme="@style/Gigle_Heading_Big_Theme" />
-
-
+            android:theme="@style/Gigle_Heading_Big_Theme"/>
 
         <com.google.android.material.button.MaterialButton
             android:id="@+id/btn_SignIn"
@@ -41,14 +37,6 @@
             app:cornerRadius="5dp"
             android:theme="@style/Gigle_Btn_Theme"
             android:layout_alignParentBottom="true"/>
-        <!--com.google.android.gms.common.SignInButton
-            android:id="@+id/btn_SignIn"
-            android:layout_width="match_parent"
-            android:layout_height="64dp"
-            android:layout_centerHorizontal="true"
-            android:layout_alignParentBottom="true"
-            android:layout_marginBottom="20dp"/-->
-
 
     </RelativeLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>
