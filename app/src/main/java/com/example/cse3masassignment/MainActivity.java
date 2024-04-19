@@ -44,7 +44,6 @@ import com.google.firebase.auth.GoogleAuthProvider;
 
 public class MainActivity extends AppCompatActivity {
     FirebaseAuth auth;
-    TextView name, mail;
     GoogleSignInClient googleSignInClient;
 
     private final ActivityResultLauncher<Intent> activityResultLauncher = registerForActivityResult(new ActivityResultContracts.StartActivityForResult(), new ActivityResultCallback<ActivityResult>() {
@@ -98,7 +97,6 @@ public class MainActivity extends AppCompatActivity {
         btn_SignIn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Log.e("==TEST==","Button Pressed");
                 Intent intent = googleSignInClient.getSignInIntent();
                 activityResultLauncher.launch(intent);
             }
