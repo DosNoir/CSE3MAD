@@ -62,6 +62,8 @@ public class MainActivity extends AppCompatActivity {
                                 auth = FirebaseAuth.getInstance();
                                 Toast.makeText(MainActivity.this,"Sign In Successful", Toast.LENGTH_SHORT).show();
                                 //Pass to next Page below
+                                Intent homeScreen = new Intent(MainActivity.this, HomeScreen.class);
+                                startActivity(homeScreen);
                             }else{
                                 //Sign in Failed
                                 Toast.makeText(MainActivity.this, "Failed To Sign In:" + task.getException(), Toast.LENGTH_SHORT).show();
