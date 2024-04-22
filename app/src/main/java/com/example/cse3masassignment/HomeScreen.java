@@ -36,7 +36,10 @@ import com.google.firebase.auth.FirebaseAuth;
 import android.content.pm.PackageManager;
 import android.location.Location;
 import android.os.Bundle;
+import android.os.VibrationAttributes;
+import android.os.Vibrator;
 import android.util.Log;
+import android.view.HapticFeedbackConstants;
 import android.view.View;
 import android.widget.ImageButton;
 import android.widget.Toast;
@@ -50,7 +53,6 @@ public class HomeScreen extends AppCompatActivity implements OnMapReadyCallback{
     Location currentLocation;
     FusedLocationProviderClient fusedLocation;
     private FirebaseAuth auth;
-
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -75,6 +77,17 @@ public class HomeScreen extends AppCompatActivity implements OnMapReadyCallback{
             @Override
             public void onClick(View view) {
                 backButtonSignOut();
+            }
+        });
+        ImageButton btn_filter_settings = findViewById(R.id.btn_filter_settings);
+        btn_filter_settings.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                //Todo Finish This Buttons Implementation (Create Popup and sliders bs)
+                //Todo find vector of the real figma icon (glhf)
+                //Todo Database connections / query's
+                //Todo Populate Map with database and make the on map marker click pop up thing
+                //Todo create private function out of this implementation to clean the code base up!
             }
         });
     }
