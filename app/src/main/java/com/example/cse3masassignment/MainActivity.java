@@ -93,15 +93,12 @@ public class MainActivity extends AppCompatActivity {
                 .requestEmail()
                 .build();
         googleSignInClient =  GoogleSignIn.getClient(MainActivity.this, option);
-
         auth = FirebaseAuth.getInstance();
         if (auth.getCurrentUser() != null){
             Intent intent = googleSignInClient.getSignInIntent();
             activityResultLauncher.launch(intent);
         }
-
-
-
+        
         Button btn_SignIn = findViewById(R.id.btn_SignIn);
         btn_SignIn.setOnClickListener(new View.OnClickListener() {
             @Override

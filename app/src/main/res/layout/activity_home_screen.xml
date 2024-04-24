@@ -58,7 +58,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="horizontal"
-                android:layout_marginHorizontal="5dp"
+                android:layout_marginTop="10dp"
                 android:layout_marginVertical="5dp"
                 android:padding="5dp">
 
@@ -79,7 +79,7 @@
                     android:layout_marginHorizontal="5dp"
                     android:layout_width="32dp"
                     android:layout_height="32dp"
-                    android:background="@drawable/outline_manage_search_32"/>
+                    android:background="@drawable/filter_search_icon"/>
             </LinearLayout>
     </LinearLayout>
 
