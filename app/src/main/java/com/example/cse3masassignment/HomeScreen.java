@@ -76,7 +76,10 @@ public class HomeScreen extends AppCompatActivity implements OnMapReadyCallback{
         btn_back.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                backButtonSignOut();
+//                backButtonSignOut();
+                // Send to event screen for testing
+                Intent eventScreen = new Intent(HomeScreen.this, EventScreen.class);
+                startActivity(eventScreen);
             }
         });
         ImageButton btn_filter_settings = findViewById(R.id.btn_filter_settings);

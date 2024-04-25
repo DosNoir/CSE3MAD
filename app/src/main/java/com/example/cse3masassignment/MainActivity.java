@@ -103,8 +103,12 @@ public class MainActivity extends AppCompatActivity {
         btn_SignIn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = googleSignInClient.getSignInIntent();
-                activityResultLauncher.launch(intent);
+//                Intent intent = googleSignInClient.getSignInIntent();
+//                activityResultLauncher.launch(intent);
+
+                // Sign in skip
+                Intent homeScreen = new Intent(MainActivity.this, HomeScreen.class);
+                startActivity(homeScreen);
             }
         });
     }
