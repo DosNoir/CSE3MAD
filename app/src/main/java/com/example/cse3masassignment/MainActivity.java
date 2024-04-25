@@ -5,6 +5,7 @@ import android.credentials.GetCredentialRequest;
 import android.credentials.GetCredentialResponse;
 import android.os.Build;
 import android.os.Bundle;
+import android.os.Debug;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
@@ -60,8 +61,10 @@ public class MainActivity extends AppCompatActivity {
                             if(task.isSuccessful()){
                                 //Sign in Successful
                                 auth = FirebaseAuth.getInstance();
-                                Toast.makeText(MainActivity.this,"Sign In Successful", Toast.LENGTH_SHORT).show();
+                                Toast.makeText(MainActivity.this,"Signing In: " + auth.getCurrentUser().getDisplayName(), Toast.LENGTH_SHORT).show();
                                 //Pass to next Page below
+                                Intent homeScreen = new Intent(MainActivity.this, HomeScreen.class);
+                                startActivity(homeScreen);
                             }else{
                                 //Sign in Failed
                                 Toast.makeText(MainActivity.this, "Failed To Sign In:" + task.getException(), Toast.LENGTH_SHORT).show();
@@ -90,9 +93,12 @@ public class MainActivity extends AppCompatActivity {
                 .requestEmail()
                 .build();
         googleSignInClient =  GoogleSignIn.getClient(MainActivity.this, option);
-
         auth = FirebaseAuth.getInstance();
-
+        if (auth.getCurrentUser() != null){
+            Intent intent = googleSignInClient.getSignInIntent();
+            activityResultLauncher.launch(intent);
+        }
+        
         Button btn_SignIn = findViewById(R.id.btn_SignIn);
         btn_SignIn.setOnClickListener(new View.OnClickListener() {
             @Override
