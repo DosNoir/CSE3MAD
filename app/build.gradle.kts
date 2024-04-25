@@ -61,9 +61,9 @@ dependencies {
     // Add the dependencies for any other desired Firebase products
     // https://firebase.google.com/docs/android/setup#available-libraries
 
-    implementation("androidx.credentials:credentials:<latest version>")
-    implementation("androidx.credentials:credentials-play-services-auth:<latest version>")
-    implementation("com.google.android.libraries.identity.googleid:googleid:<latest version>")
+    implementation("androidx.credentials:credentials:1.2.2")
+    implementation("androidx.credentials:credentials-play-services-auth:1.2.2")
+    implementation("com.google.android.libraries.identity.googleid:googleid:1.1.0")
     implementation("com.github.bumptech.glide:glide:4.16.0")
     implementation("com.google.android.gms:play-services-auth:21.1.0")
 
