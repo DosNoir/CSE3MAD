@@ -37,6 +37,7 @@ dependencies {
     implementation(libs.activity)
     implementation(libs.constraintlayout)
     implementation(libs.firebase.auth)
+    implementation(libs.play.services.maps)
     testImplementation(libs.junit)
     androidTestImplementation(libs.ext.junit)
     androidTestImplementation(libs.espresso.core)
@@ -44,6 +45,10 @@ dependencies {
 
     implementation("androidx.credentials:credentials:1.3.0-alpha03")
 
+    //Maps Implementation
+    implementation("com.google.android.gms:play-services-maps:18.2.0")
+    implementation ("com.google.android.gms:play-services-maps")
+    implementation("com.google.android.gms:play-services-location:21.2.0")
 
     // optional - needed for credentials support from play services, for devices running
     // Android 13 and below.
