@@ -1,6 +1,9 @@
 package com.example.cse3masassignment;
 
+import android.content.Intent;
 import android.os.Bundle;
+import android.view.View;
+import android.widget.ImageButton;
 
 import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
@@ -19,6 +22,16 @@ public class EventScreen extends AppCompatActivity {
             Insets systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars());
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom);
             return insets;
+        });
+
+        //Back Button to Home Screen
+        ImageButton btn_back = findViewById(R.id.btn_Back);
+        btn_back.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent homeScreen = new Intent(EventScreen.this, HomeScreen.class);
+                startActivity(homeScreen);
+            }
         });
     }
 }

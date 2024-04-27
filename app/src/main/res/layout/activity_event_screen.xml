@@ -46,6 +46,76 @@
             </RelativeLayout>
         </androidx.appcompat.widget.Toolbar>
 
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="300dp" >
+
+            <ImageView
+                android:id="@+id/event_image"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="top"
+                tools:srcCompat="@tools:sample/backgrounds/scenic" />
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            android:paddingHorizontal="5dp"
+            android:paddingVertical="10dp">
+
+            <TextView
+                android:id="@+id/event_info_heading"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_alignParentTop="true"
+                android:text="Event Info"
+                android:theme="@style/Gigle_Body_Heading_Theme" />
+
+            <TextView
+                android:id="@+id/event_info"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/event_info_heading"s
+                android:text="Event info goes here..."
+                android:theme="@style/Gigle_Body_Theme" />
+
+            <TextView
+                android:id="@+id/venue_info_heading"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/event_info"
+                android:text="Venue Info"
+                android:theme="@style/Gigle_Body_Heading_Theme" />
+
+            <TextView
+                android:id="@+id/venue_info"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/venue_info_heading"
+                android:text="Venue info goes here..."
+                android:theme="@style/Gigle_Body_Theme" />
+
+            <Button
+                android:id="@+id/set_list_btn"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_above="@id/reviews_btn"
+                android:text="Set List"
+                android:theme="@style/Gigle_Btn_Theme"
+                app:cornerRadius="5dp" />
+
+            <Button
+                android:id="@+id/reviews_btn"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_alignParentBottom="true"
+                android:text="Reviews"
+                android:theme="@style/Gigle_Btn_Theme"
+                app:cornerRadius="5dp" />
+        </RelativeLayout>
+
 
     </LinearLayout>
 
