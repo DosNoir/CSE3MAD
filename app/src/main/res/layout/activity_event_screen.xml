@@ -48,7 +48,8 @@
 
         <RelativeLayout
             android:layout_width="match_parent"
-            android:layout_height="300dp" >
+            android:layout_height="365dp"
+            android:layout_margin="5dp">
 
             <ImageView
                 android:id="@+id/event_image"
@@ -59,43 +60,75 @@
         </RelativeLayout>
 
         <RelativeLayout
+
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:orientation="vertical"
-            android:paddingHorizontal="5dp"
-            android:paddingVertical="10dp">
+            android:layout_marginHorizontal="5dp">
 
+            <!--Event Infomation-->
             <TextView
                 android:id="@+id/event_info_heading"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_alignParentTop="true"
                 android:text="Event Info"
+                android:background="@drawable/gigle_textbox_rounded_top"
                 android:theme="@style/Gigle_Body_Heading_Theme" />
 
             <TextView
                 android:id="@+id/event_info"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_below="@id/event_info_heading"s
+                android:layout_below="@id/event_info_heading"
                 android:text="Event info goes here..."
+                android:background="@drawable/gigle_textbox_rounder_bottom"
                 android:theme="@style/Gigle_Body_Theme" />
-
+            <!-- -->
+            <!--Venue Information-->
             <TextView
                 android:id="@+id/venue_info_heading"
+                android:layout_marginTop="15dp"
+                android:background="@drawable/gigle_textbox_rounded_top"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_below="@id/event_info"
-                android:text="Venue Info"
+                android:text="Venue Infomnation"
                 android:theme="@style/Gigle_Body_Heading_Theme" />
 
             <TextView
-                android:id="@+id/venue_info"
+                android:id="@+id/venue_name"
                 android:layout_width="match_parent"
+                android:background="@drawable/gigle_textbox_rounded_middle"
                 android:layout_height="wrap_content"
                 android:layout_below="@id/venue_info_heading"
-                android:text="Venue info goes here..."
+                android:text="Venue Name"
                 android:theme="@style/Gigle_Body_Theme" />
+            <TextView
+                android:id="@+id/venue_website"
+                android:layout_width="match_parent"
+                android:background="@drawable/gigle_textbox_rounded_middle"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/venue_name"
+                android:text="Venue Website"
+                android:theme="@style/Gigle_Body_Theme" />
+            <TextView
+                android:id="@+id/venue_email"
+                android:layout_width="match_parent"
+                android:background="@drawable/gigle_textbox_rounded_middle"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/venue_website"
+                android:text="Venue Email"
+                android:theme="@style/Gigle_Body_Theme" />
+            <TextView
+                android:id="@+id/venue_phonenumber"
+                android:layout_width="match_parent"
+                android:background="@drawable/gigle_textbox_rounder_bottom"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/venue_email"
+                android:text="Venue Phone Number"
+                android:theme="@style/Gigle_Body_Theme" />
+            <!-- -->
+
 
             <Button
                 android:id="@+id/set_list_btn"
