@@ -81,6 +81,8 @@
                     android:layout_height="32dp"
                     android:background="@drawable/filter_search_icon"/>
             </LinearLayout>
+
+
     </LinearLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

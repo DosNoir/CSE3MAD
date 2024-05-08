@@ -68,7 +68,7 @@
 
             <!--Event Infomation-->
             <TextView
-                android:id="@+id/event_info_heading"
+                android:id="@+id/event_heading"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="Event Info"
@@ -79,7 +79,7 @@
                 android:id="@+id/event_info"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_below="@id/event_info_heading"
+                android:layout_below="@id/event_heading"
                 android:text="Event info goes here..."
                 android:background="@drawable/gigle_textbox_rounder_bottom"
                 android:theme="@style/Gigle_Body_Theme" />
