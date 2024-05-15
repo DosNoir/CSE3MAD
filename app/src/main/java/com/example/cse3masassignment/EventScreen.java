@@ -67,7 +67,6 @@ public class EventScreen extends AppCompatActivity {
     private String selectedEventID;
     private Event selectedEvent;
 
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -82,7 +81,7 @@ public class EventScreen extends AppCompatActivity {
         auth = FirebaseAuth.getInstance();
         db = FirebaseFirestore.getInstance();
         selectedEventID = getIntent().getStringExtra("SELECTED_EVENT");
-        loadData();
+        getSelectedEvent();
 
         //Initializing
         eventHeadingTxV = findViewById(R.id.event_heading);
@@ -93,8 +92,6 @@ public class EventScreen extends AppCompatActivity {
         venuePhoneNumberTxV = findViewById(R.id.venue_phonenumber);
         ImageButton btn_back = findViewById(R.id.btn_Back);
         //=========================================================
-
-
 
         //Back Button to Home Screen (onClick)
         btn_back.setOnClickListener(new View.OnClickListener() {
@@ -107,17 +104,15 @@ public class EventScreen extends AppCompatActivity {
     }
 
 
-
-
-
-
-    private void loadData(){
+    //Get updated selected event from database then once it has gotten it update the ui.
+    //if you dont do it this way the application will crash because it will set the text views before it has completed, getting data from the data base
+    private void getSelectedEvent(){
         db.collection("Events").get().addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
             @Override
             public void onComplete(@NonNull Task<QuerySnapshot> task) {
                 if(task.isSuccessful()){
                     for(QueryDocumentSnapshot document : task.getResult()){
-
+                        Log.w("READTESTFIREBASE", "DATA: " + document.getData(), task.getException());
                         if(document.getId().equals(selectedEventID)) {
                             String tempId = document.getId();
                             String tempName = document.getString("eventName");

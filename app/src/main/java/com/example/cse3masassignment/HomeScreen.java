@@ -145,7 +145,6 @@ public class HomeScreen extends AppCompatActivity implements OnMapReadyCallback,
         googleMap.addMarker(markerOptions);
         googleMap.moveCamera(CameraUpdateFactory.newLatLngZoom(latLng,11));
 
-        // TODO: 15/05/2024 iterate over all events geopoints and add them to the map :)
         loadDataAddMarkers();
     }
 
@@ -206,8 +205,6 @@ public class HomeScreen extends AppCompatActivity implements OnMapReadyCallback,
             }
 
         }
-
-
         return false;
     }
 
