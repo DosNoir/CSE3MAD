@@ -28,10 +28,16 @@ import com.google.android.gms.maps.OnMapReadyCallback;
 import com.google.android.gms.maps.SupportMapFragment;
 import com.google.android.gms.maps.model.BitmapDescriptorFactory;
 import com.google.android.gms.maps.model.LatLng;
+import com.google.android.gms.maps.model.Marker;
 import com.google.android.gms.maps.model.MarkerOptions;
+import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.firestore.FirebaseFirestore;
+import com.google.firebase.firestore.GeoPoint;
+import com.google.firebase.firestore.QueryDocumentSnapshot;
+import com.google.firebase.firestore.QuerySnapshot;
 
 import android.content.pm.PackageManager;
 import android.location.Location;
@@ -45,14 +51,20 @@ import android.widget.ImageButton;
 import android.widget.Toast;
 
 import java.security.PrivateKey;
+import java.util.ArrayList;
 
-public class HomeScreen extends AppCompatActivity implements OnMapReadyCallback{
+public class HomeScreen extends AppCompatActivity implements OnMapReadyCallback, GoogleMap.OnMarkerClickListener {
     MapView mapView;
     GoogleMap googleMap;
     private final int FINE_PERMISSION_CODE = 1;
     Location currentLocation;
     FusedLocationProviderClient fusedLocation;
     private FirebaseAuth auth;
+    private FirebaseFirestore db;
+    private ArrayList<Event> events = new ArrayList<Event>();
+    private String markerClickSelectionEventId;
+
+    private ArrayList<Marker> myMarkers;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -64,8 +76,10 @@ public class HomeScreen extends AppCompatActivity implements OnMapReadyCallback{
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom);
             return insets;
         });
+
         //Get The FireBase Auth
         auth = FirebaseAuth.getInstance();
+        db = FirebaseFirestore.getInstance();
 
         //Display Map and find last location
         fusedLocation = LocationServices.getFusedLocationProviderClient(this);
@@ -120,7 +134,10 @@ public class HomeScreen extends AppCompatActivity implements OnMapReadyCallback{
     @Override
     public void onMapReady(@NonNull GoogleMap googleMap) {
         this.googleMap = googleMap;
+        googleMap.setOnMarkerClickListener(this);
         LatLng latLng = new LatLng(currentLocation.getLatitude(), currentLocation.getLongitude());
+
+        //Current user Location
         MarkerOptions markerOptions = new MarkerOptions();
         markerOptions.position(latLng);
         markerOptions.title("Current Location");
@@ -128,6 +145,67 @@ public class HomeScreen extends AppCompatActivity implements OnMapReadyCallback{
         googleMap.addMarker(markerOptions);
         googleMap.moveCamera(CameraUpdateFactory.newLatLngZoom(latLng,11));
 
+        loadDataAddMarkers();
+    }
+
+
+    private void loadDataAddMarkers(){
+        db.collection("Events").get().addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
+            @Override
+            public void onComplete(@NonNull Task<QuerySnapshot> task) {
+                if(task.isSuccessful()){
+                    for(QueryDocumentSnapshot document : task.getResult()){
+                        Log.d("READTESTFIREBASE", document.getId()+ " => " + document.getData());
+                        String tempId = document.getId();
+                        String tempName = document.getString("eventName");
+                        String tempLocation = document.getString("eventLocation");
+                        String tempDate = document.getString("eventDate");
+
+                        GeoPoint tempPoint = document.getGeoPoint("eventGeoPoint");
+                        LatLng tempLatLng = new LatLng(tempPoint.getLatitude(), tempPoint.getLongitude());
+
+                        MarkerOptions markerOptions =  new MarkerOptions();
+                        markerOptions.position(tempLatLng);
+                        markerOptions.title(tempName);
+                        markerOptions.icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_AZURE));
+
+                        googleMap.addMarker(markerOptions);
+
+                        Event tempEvent= new Event(tempId, tempName, tempLocation, tempDate, tempLatLng);
+                        events.add(tempEvent);
+                    }
+                }else {
+                    Log.w("READTESTFIREBASE", "Error getting data", task.getException());
+                }
+            }
+        });
+    }
+    @Override
+    public boolean onMarkerClick(@NonNull Marker marker) {
+        Log.i("MARKERTAG", "onMarkerClick: "+ marker.getTitle());
+        Event selectedEvent;
+        if(!marker.getTitle().equals("Current Location"))
+        {
+            for (Event x: events) {
+                if(x.getEventName().equals(marker.getTitle())){
+                    selectedEvent = x;
+                    new AlertDialog.Builder(HomeScreen.this)
+                            .setTitle(selectedEvent.getEventName())
+                            .setMessage("More Info?")
+                            .setIcon(android.R.drawable.star_on)
+                            .setPositiveButton(android.R.string.yes, new DialogInterface.OnClickListener() {
+                                public void onClick(DialogInterface dialog, int whichButton) {
+                                    Intent eventScreen = new Intent(HomeScreen.this, EventScreen.class);
+                                    eventScreen.putExtra("SELECTED_EVENT", selectedEvent.getEventID());
+                                    startActivity(eventScreen);
+                                }})
+                            .setNegativeButton(android.R.string.no, null).show();
+                    break;
+                }
+            }
+
+        }
+        return false;
     }
 
     @Override
@@ -165,6 +243,8 @@ public class HomeScreen extends AppCompatActivity implements OnMapReadyCallback{
                     }})
                 .setNegativeButton(android.R.string.no, null).show();
     }
+
+
     //endregion
 
 

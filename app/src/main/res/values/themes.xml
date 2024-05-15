@@ -24,14 +24,14 @@
     <!--Heading For Body Paragraph-->
     <style name="Gigle_Body_Heading_Theme" parent="android:Widget.TextView">
         <item name="android:fontFamily">@font/nunito_sans_semibold</item>
-        <item name="android:textColor">@color/default_text_colour</item>
+        <item name="android:textColor">@color/txtBx_text</item>
         <item name="android:textAlignment">center</item>
-        <item name="android:textSize">24dp</item>
+        <item name="android:textSize">32dp</item>
     </style>
     <!--Body Paragraph-->
     <style name="Gigle_Body_Theme" parent="android:Widget.TextView">
         <item name="android:fontFamily">@font/nunito_sans_semibold</item>
-        <item name="android:textColor">@color/default_text_colour</item>
+        <item name="android:textColor">@color/txtBx_text</item>
         <item name="android:textAlignment">center</item>
         <item name="android:textSize">20dp</item>
     </style>

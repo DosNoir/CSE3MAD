@@ -71,7 +71,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="32dp"
                     android:paddingLeft="5dp"
-                    android:background="@drawable/gigle_textbox_rounded"
+                    android:background="@drawable/gigle_edittext_white"
                     android:layout_weight="100"/>
 
                 <ImageButton
@@ -81,6 +81,8 @@
                     android:layout_height="32dp"
                     android:background="@drawable/filter_search_icon"/>
             </LinearLayout>
+
+
     </LinearLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

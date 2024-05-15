@@ -105,6 +105,10 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View view) {
                 Intent intent = googleSignInClient.getSignInIntent();
                 activityResultLauncher.launch(intent);
+                /* Sign in skip
+                Intent homeScreen = new Intent(MainActivity.this, HomeScreen.class);
+                startActivity(homeScreen);
+                //*/
             }
         });
     }
