@@ -5,6 +5,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
+import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -62,6 +63,8 @@ public class EventScreen extends AppCompatActivity {
     private TextView venueWebsiteTxV;
     private TextView venueEmailTxV;
     private TextView venuePhoneNumberTxV;
+    private Button setListBtn;
+    private Button reviewBtn;
     private FirebaseAuth auth;
     private FirebaseFirestore db;
     private String selectedEventID;
@@ -84,6 +87,8 @@ public class EventScreen extends AppCompatActivity {
         getSelectedEvent();
 
         //Initializing
+        setListBtn = findViewById(R.id.set_list_btn);
+        reviewBtn = findViewById(R.id.reviews_btn);
         eventHeadingTxV = findViewById(R.id.event_heading);
         eventInfoTxV = findViewById(R.id.event_info);
         venueNameTxV = findViewById(R.id.venue_name);
@@ -92,6 +97,15 @@ public class EventScreen extends AppCompatActivity {
         venuePhoneNumberTxV = findViewById(R.id.venue_phonenumber);
         ImageButton btn_back = findViewById(R.id.btn_Back);
         //=========================================================
+
+        setListBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                
+            }
+        });
+
+
 
         //Back Button to Home Screen (onClick)
         btn_back.setOnClickListener(new View.OnClickListener() {
