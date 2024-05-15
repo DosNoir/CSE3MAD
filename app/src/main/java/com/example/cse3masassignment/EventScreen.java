@@ -112,7 +112,6 @@ public class EventScreen extends AppCompatActivity {
             public void onComplete(@NonNull Task<QuerySnapshot> task) {
                 if(task.isSuccessful()){
                     for(QueryDocumentSnapshot document : task.getResult()){
-                        Log.w("READTESTFIREBASE", "DATA: " + document.getData(), task.getException());
                         if(document.getId().equals(selectedEventID)) {
                             String tempId = document.getId();
                             String tempName = document.getString("eventName");
@@ -122,13 +121,34 @@ public class EventScreen extends AppCompatActivity {
                             GeoPoint tempPoint = document.getGeoPoint("eventGeoPoint");
                             LatLng tempLatLng = new LatLng(tempPoint.getLatitude(), tempPoint.getLongitude());
 
+                            // TODO: 15/05/2024 get venue information from form
+                            getVenueInfo();
+                            
                             selectedEvent = new Event(tempId, tempName, tempLocation, tempDate, tempLatLng);
                             eventHeadingTxV.setText(selectedEvent.getEventName());
                             eventInfoTxV.setText(selectedEvent.getEventLocation() + " | " + selectedEvent.getEventDate());
+                            
                         }
                     }
                 }else {
                     Log.w("READTESTFIREBASE", "Error getting data", task.getException());
+                }
+            }
+        });
+    }
+    private void getVenueInfo(){
+        db.collection("Events").document(selectedEventID).collection("Venue").get().addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
+            @Override
+            public void onComplete(@NonNull Task<QuerySnapshot> task) {
+                if (task.isSuccessful()) {
+                    for (QueryDocumentSnapshot document : task.getResult()) {
+                        venueNameTxV.setText(document.getString("venueName"));
+                        venueEmailTxV.setText(document.getString("venueEmail"));
+                        venuePhoneNumberTxV.setText(document.getString("venuePhone"));
+                        venueWebsiteTxV.setText(document.getString("venueWebsite"));
+                    }
+                } else {
+                    Log.d("VENUETAG", "Error getting documents: ", task.getException());
                 }
             }
         });

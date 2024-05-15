@@ -77,6 +77,7 @@ public class HomeScreen extends AppCompatActivity implements OnMapReadyCallback,
             return insets;
         });
 
+
         //Get The FireBase Auth
         auth = FirebaseAuth.getInstance();
         db = FirebaseFirestore.getInstance();
