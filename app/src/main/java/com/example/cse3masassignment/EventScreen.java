@@ -124,7 +124,7 @@ public class EventScreen extends AppCompatActivity {
                         //TODO  do check for selected event via passed through event info from homescreen when implemented
                         Map<String,Object> event = document.getData();
 
-                        eventHeadingTxV.setText(event.get("eventName").toString());
+                        eventHeadingTxV.setText(document.getString("eventName"));
                         eventInfoTxV.setText(event.get("eventLocation").toString() + " | " + event.get("eventDate").toString());
                     }
                 }else {
