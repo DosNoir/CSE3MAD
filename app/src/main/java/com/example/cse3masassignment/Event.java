@@ -2,17 +2,18 @@ package com.example.cse3masassignment;
 
 import com.google.android.gms.maps.model.LatLng;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Map;
 import java.util.Objects;
 
-public class Event {
+public class Event implements Serializable {
     private String eventID;
     private String eventName;
     private LatLng geoPoint;
     private String eventLocation;
     private String eventDate;
-    private ArrayList<Band> eventSetList  = new ArrayList<Band>();
+    private transient ArrayList<Band> eventSetList  = new ArrayList<Band>();
 
 
     public Event(String eventID,String eventName, String eventLocation, String eventDate, LatLng geoPoint){
@@ -40,6 +41,7 @@ public class Event {
         Band tempBand = new Band(bandID, bandName,bandGenre,bandWebsite);
         eventSetList.add(tempBand);
     }
+
     public ArrayList<Band> getEventSetList() {
         return eventSetList;
     }

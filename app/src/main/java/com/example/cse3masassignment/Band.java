@@ -1,9 +1,10 @@
 package com.example.cse3masassignment;
 
+import java.io.Serializable;
 import java.net.IDN;
 import java.util.Map;
 
-public class Band {
+public class Band implements Serializable {
     private String bandID;
     private String bandName;
     private String bandGenre;

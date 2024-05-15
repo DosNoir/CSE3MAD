@@ -46,6 +46,7 @@ import com.google.android.gms.auth.api.signin.GoogleSignInClient;
 import com.google.android.gms.auth.api.signin.GoogleSignInOptions;
 import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.FirebaseFirestore;
+import com.google.firebase.firestore.GeoPoint;
 import com.google.firebase.firestore.QueryDocumentSnapshot;
 import com.google.firebase.firestore.QuerySnapshot;
 
@@ -63,6 +64,8 @@ public class EventScreen extends AppCompatActivity {
     private TextView venuePhoneNumberTxV;
     private FirebaseAuth auth;
     private FirebaseFirestore db;
+    private String selectedEventID;
+    private Event selectedEvent;
 
 
     @Override
@@ -78,6 +81,9 @@ public class EventScreen extends AppCompatActivity {
         //Get Firebase Instance Auth
         auth = FirebaseAuth.getInstance();
         db = FirebaseFirestore.getInstance();
+        selectedEventID = getIntent().getStringExtra("SELECTED_EVENT");
+        loadData();
+
         //Initializing
         eventHeadingTxV = findViewById(R.id.event_heading);
         eventInfoTxV = findViewById(R.id.event_info);
@@ -87,19 +93,6 @@ public class EventScreen extends AppCompatActivity {
         venuePhoneNumberTxV = findViewById(R.id.venue_phonenumber);
         ImageButton btn_back = findViewById(R.id.btn_Back);
         //=========================================================
-        Log.d("TESTFUNCTIOn", "onCreate: TestFuctionRun");
-        testFunctionWrite();
-        testFunctionRead();
-        Log.d("TESTFUNCTIOn", "onCreate: TestFuctionRun");
-
-
-
-
-
-
-
-
-
 
 
 
@@ -114,47 +107,36 @@ public class EventScreen extends AppCompatActivity {
     }
 
 
-    void testFunctionRead(){
+
+
+
+
+    private void loadData(){
         db.collection("Events").get().addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
             @Override
             public void onComplete(@NonNull Task<QuerySnapshot> task) {
                 if(task.isSuccessful()){
                     for(QueryDocumentSnapshot document : task.getResult()){
-                        Log.d("READTESTFIREBASE", document.getId()+ " => " + document.getData());
-                        //TODO  do check for selected event via passed through event info from homescreen when implemented
-                        Map<String,Object> event = document.getData();
 
-                        eventHeadingTxV.setText(document.getString("eventName"));
-                        eventInfoTxV.setText(event.get("eventLocation").toString() + " | " + event.get("eventDate").toString());
+                        if(document.getId().equals(selectedEventID)) {
+                            String tempId = document.getId();
+                            String tempName = document.getString("eventName");
+                            String tempLocation = document.getString("eventLocation");
+                            String tempDate = document.getString("eventDate");
+
+                            GeoPoint tempPoint = document.getGeoPoint("eventGeoPoint");
+                            LatLng tempLatLng = new LatLng(tempPoint.getLatitude(), tempPoint.getLongitude());
+
+                            selectedEvent = new Event(tempId, tempName, tempLocation, tempDate, tempLatLng);
+                            eventHeadingTxV.setText(selectedEvent.getEventName());
+                            eventInfoTxV.setText(selectedEvent.getEventLocation() + " | " + selectedEvent.getEventDate());
+                        }
                     }
                 }else {
                     Log.w("READTESTFIREBASE", "Error getting data", task.getException());
                 }
             }
         });
-    }
-    void testFunctionWrite(){
-        // Create a new user with a first and last name
-        Map<String, Object> user = new HashMap<>();
-        user.put("first", "Ada");
-        user.put("last", "Lovelace");
-        user.put("born", 1815);
-
-        // Add a new document with a generated ID
-        db.collection("users")
-                .add(user)
-                .addOnSuccessListener(new OnSuccessListener<DocumentReference>() {
-                    @Override
-                    public void onSuccess(DocumentReference documentReference) {
-                        Log.d("FIREBASEDEBUG", "DocumentSnapshot added with ID: " + documentReference.getId());
-                    }
-                })
-                .addOnFailureListener(new OnFailureListener() {
-                    @Override
-                    public void onFailure(@NonNull Exception e) {
-                        Log.w("FIREBASEDEBUG", "Error adding document", e);
-                    }
-                });
     }
 }
 
