@@ -111,11 +111,11 @@ public class EventScreen extends AppCompatActivity {
         setListBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                
+                Intent setListScreen = new Intent(EventScreen.this, SetListScreen.class);
+                setListScreen.putExtra("SELECTED_EVENT", selectedEventID);
+                startActivity(setListScreen);
             }
         });
-
-
 
         //Back Button to Home Screen (onClick)
         btn_back.setOnClickListener(new View.OnClickListener() {
