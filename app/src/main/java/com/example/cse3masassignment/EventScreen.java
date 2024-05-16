@@ -86,7 +86,7 @@ public class EventScreen extends AppCompatActivity {
         selectedEventID = getIntent().getStringExtra("SELECTED_EVENT");
         getSelectedEvent();
 
-        //Initializing
+        //Initializing UI Elements
         setListBtn = findViewById(R.id.set_list_btn);
         reviewBtn = findViewById(R.id.reviews_btn);
         eventHeadingTxV = findViewById(R.id.event_heading);
@@ -98,6 +98,16 @@ public class EventScreen extends AppCompatActivity {
         ImageButton btn_back = findViewById(R.id.btn_Back);
         //=========================================================
 
+
+
+        reviewBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent reviewScreen = new Intent(EventScreen.this, ReviewScreen.class);
+                reviewScreen.putExtra("SELECTED_EVENT", selectedEventID);
+                startActivity(reviewScreen);
+            }
+        });
         setListBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
