@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
+import android.widget.ArrayAdapter;
 import android.widget.ImageButton;
 import android.widget.ListView;
 import android.widget.TextView;
@@ -34,7 +35,8 @@ public class SetListScreen extends AppCompatActivity {
     private String selectedEventID;
     private Event selectedEvent;
 
-    private ArrayList<Band> bandList = new ArrayList<Band>();
+    private ArrayList<Band> bandList;
+    private ArrayAdapter<Band> arrayAdapter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -46,14 +48,18 @@ public class SetListScreen extends AppCompatActivity {
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom);
             return insets;
         });
+
         //Get Firebase Instance Auth
         auth = FirebaseAuth.getInstance();
         db = FirebaseFirestore.getInstance();
         selectedEventID = getIntent().getStringExtra("SELECTED_EVENT");
+
+        // Band list
+        setListView = findViewById(R.id.set_list_view);
+        bandList = new ArrayList<>();
         getSelectedBands();
 
         ImageButton btn_back = findViewById(R.id.btn_Back);
-        setListView = findViewById(R.id.set_list_view);
 
         //Back Button to Event Screen (onClick)
         btn_back.setOnClickListener(new View.OnClickListener() {
@@ -66,7 +72,7 @@ public class SetListScreen extends AppCompatActivity {
         });
     }
 
-    private void getSelectedBands(){
+    private void getSelectedBands() {
         db.collection("Events").document(selectedEventID).collection("Bands")
                 .get()
                 .addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
@@ -85,7 +91,9 @@ public class SetListScreen extends AppCompatActivity {
                                 Log.i("BANDTAG", document.getData().toString());
                             }
 
-                            // TODO: Update UI elements
+                            // Add bands from ArrayList to ListView
+                            arrayAdapter = new ArrayAdapter<>(SetListScreen.this, android.R.layout.simple_list_item_1, bandList);
+                            setListView.setAdapter(arrayAdapter);
 
                         } else {
                             Log.w("READTESTFIREBASE", "Error getting data", task.getException());
