@@ -68,7 +68,7 @@
             <ListView
                 android:id="@+id/reviewsListView"
                 android:layout_width="match_parent"
-                android:layout_height="750dp"
+                android:layout_height="650dp"
                 android:divider="@android:color/transparent"
                 android:overScrollMode="always"
                 android:dividerHeight="15dp"
