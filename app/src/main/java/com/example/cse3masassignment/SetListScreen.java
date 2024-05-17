@@ -92,8 +92,9 @@ public class SetListScreen extends AppCompatActivity {
                             }
 
                             // Add bands from ArrayList to ListView
-                            arrayAdapter = new ArrayAdapter<>(SetListScreen.this, android.R.layout.simple_list_item_1, bandList);
-                            setListView.setAdapter(arrayAdapter);
+//                            arrayAdapter = new ArrayAdapter<>(SetListScreen.this, android.R.layout.simple_list_item_1, bandList);
+                            BandAdapter bandAdapter = new BandAdapter(SetListScreen.this, bandList);
+                            setListView.setAdapter(bandAdapter);
 
                         } else {
                             Log.w("READTESTFIREBASE", "Error getting data", task.getException());
