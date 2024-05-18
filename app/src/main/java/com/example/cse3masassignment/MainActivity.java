@@ -47,6 +47,8 @@ public class MainActivity extends AppCompatActivity {
     FirebaseAuth auth;
     GoogleSignInClient googleSignInClient;
 
+    DBfiller dbFiller;
+
     private final ActivityResultLauncher<Intent> activityResultLauncher = registerForActivityResult(new ActivityResultContracts.StartActivityForResult(), new ActivityResultCallback<ActivityResult>() {
         @Override
         public void onActivityResult(ActivityResult result) {
@@ -98,6 +100,9 @@ public class MainActivity extends AppCompatActivity {
             Intent intent = googleSignInClient.getSignInIntent();
             activityResultLauncher.launch(intent);
         }
+
+        dbFiller = new DBfiller(MainActivity.this);
+        dbFiller.fill();
         
         Button btn_SignIn = findViewById(R.id.btn_SignIn);
         btn_SignIn.setOnClickListener(new View.OnClickListener() {
