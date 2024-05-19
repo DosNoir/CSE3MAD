@@ -3,6 +3,8 @@ package com.example.cse3masassignment;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.Button;
+import android.widget.EditText;
 import android.widget.ImageButton;
 
 import androidx.activity.EdgeToEdge;
@@ -19,6 +21,10 @@ public class CreateReviewScreen extends AppCompatActivity {
     private FirebaseAuth auth;
     private FirebaseFirestore db;
     private String selectedEventID;
+
+    private EditText nameEditText;
+    private EditText reviewEditText;
+    private Button postReviewBtn;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -33,6 +39,15 @@ public class CreateReviewScreen extends AppCompatActivity {
         auth = FirebaseAuth.getInstance();
         db = FirebaseFirestore.getInstance();
         selectedEventID = getIntent().getStringExtra("SELECTED_EVENT");
+
+        //Initialising Vars
+        nameEditText = findViewById(R.id.nameEditText);
+        reviewEditText = findViewById(R.id.reviewEditText);
+        postReviewBtn = findViewById(R.id.postReviewBtn);
+
+        //Set UserName to Name Edit Test
+        nameEditText.setText(auth.getCurrentUser().getDisplayName());
+
 
 
 

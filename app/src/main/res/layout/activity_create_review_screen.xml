@@ -42,12 +42,66 @@
                     android:background="@drawable/baseline_arrow_back_24"/>
             </RelativeLayout>
         </androidx.appcompat.widget.Toolbar>
-
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="Create Review"
             android:theme="@style/Gigle_Heading_Theme"/>
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@drawable/rounded_yellow_square"
+            android:layout_marginHorizontal="5dp"
+            android:layout_above="@+id/postReviewBtn"
+            android:orientation="vertical"
+            android:layout_marginBottom="10dp">
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Name"
+                android:theme="@style/Gigle_Body_Heading_Theme"/>
+            <EditText
+                android:paddingLeft="8dp"
+                android:fontFamily="@font/nunito_sans_semibold"
+                android:textSize="20dp"
+                android:textColor="@color/black"
+                android:id="@+id/nameEditText"
+                android:layout_marginHorizontal="5dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/gigle_edittext_white"/>
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Review"
+                android:theme="@style/Gigle_Body_Heading_Theme"/>
+            <EditText
+                android:gravity="top|left"
+                android:fontFamily="@font/nunito_sans_semibold"
+                android:textSize="20dp"
+                android:paddingLeft="8dp"
+                android:paddingTop="5dp"
+                android:textColor="@color/black"
+                android:id="@+id/reviewEditText"
+                android:layout_marginHorizontal="5dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="10dp"
+                android:lines="22"
+                android:background="@drawable/gigle_edittext_white"/>
+        </LinearLayout>
+            <Button
+                android:layout_marginHorizontal="5dp"
+                android:id="@+id/postReviewBtn"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:theme="@style/Gigle_Btn_Theme"
+                android:layout_alignParentBottom="true"
+                android:text="Post Review"/>
+        </RelativeLayout>
 
     </LinearLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>
