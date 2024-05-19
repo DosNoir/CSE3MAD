@@ -55,6 +55,20 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_marginHorizontal="5dp">
+
+
+            <ListView
+                android:id="@+id/reviewsListView"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_above="@id/reviews_btn"
+                android:divider="@android:color/transparent"
+                android:overScrollMode="always"
+                android:dividerHeight="15dp"
+                android:drawSelectorOnTop="true"
+                tools:listitem="@layout/list_item" />
+
+
             <Button
                 android:id="@+id/reviews_btn"
                 android:layout_gravity="bottom"
@@ -64,16 +78,6 @@
                 android:text="Create Reviews"
                 android:theme="@style/Gigle_Btn_Theme"
                 app:cornerRadius="5dp"/>
-
-            <ListView
-                android:id="@+id/reviewsListView"
-                android:layout_width="match_parent"
-                android:layout_height="650dp"
-                android:divider="@android:color/transparent"
-                android:overScrollMode="always"
-                android:dividerHeight="15dp"
-                android:drawSelectorOnTop="true"
-                tools:listitem="@layout/list_item" />
         </RelativeLayout>
     </LinearLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>

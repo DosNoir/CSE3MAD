@@ -42,5 +42,12 @@
                     android:background="@drawable/baseline_arrow_back_24"/>
             </RelativeLayout>
         </androidx.appcompat.widget.Toolbar>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Create Review"
+            android:theme="@style/Gigle_Heading_Theme"/>
+
     </LinearLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>
