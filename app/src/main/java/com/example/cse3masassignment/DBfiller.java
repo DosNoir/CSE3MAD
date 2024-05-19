@@ -68,28 +68,56 @@ public class DBfiller {
     }
     protected void fill() {
         for (String[] row : eventsData) {
-            addEvent(row);
+            if (row.length >= 7) {
+                addEvent(row);
+            }
         }
     }
     protected void addEvent(String[] row) {
-        String eventID = row[0];
+        String eventID = row[1];
 
         // Define event data
         Map<String, Object> event = new HashMap<>();
-        event.put("eventName", row[1]);
-        event.put("eventDate", row[2]);
-        event.put("eventLocation", row[3]);
-        event.put("eventGeoPoint", new GeoPoint(Float.parseFloat(row[4]), Float.parseFloat(row[5])));
+        event.put("eventName", row[2]);
+        event.put("eventDate", row[3]);
+        event.put("eventLocation", row[4]);
+        event.put("eventGeoPoint", new GeoPoint(Float.parseFloat(row[5]), Float.parseFloat(row[6])));
 
         // Add event document
-        db.collection("Events").document(eventID)
+        db.collection("Events")
+                .document(eventID)
                 .set(event)
                 .addOnSuccessListener(aVoid -> {
                     Log.d(TAG, "Event added with ID: " + eventID);
+                    addVenue(eventID, row[0]);
                     addBands(eventID);
-                    addVenues(eventID);
                 })
                 .addOnFailureListener(e -> Log.w(TAG, "Error adding event", e));
+    }
+
+
+    protected void addVenue(String eventID, String venueID) {
+        CollectionReference venueRef = db.collection(EVENTS_COLLECTION_PATH)
+                .document(eventID)
+                .collection(VENUE_COLLECTION_PATH);
+
+        for (String[] row : venuesData) {
+            if ((row[0].equals(venueID)) && (row.length >= 4)) {
+
+                Map<String, Object> venue = new HashMap<>();
+                venue.put("venueName", row[1]);
+                venue.put("venueEmail", row[2]);
+                venue.put("venueWebsite", row[3]);
+
+                venueRef.document(row[0]).set(venue)
+                        .addOnSuccessListener(aVoid -> {
+                            Log.d(TAG, "Venue added: " + row[0]);
+                        })
+                        .addOnFailureListener(e -> Log.w(TAG, "Error adding venue", e));
+
+                break;
+            }
+        }
     }
 
     protected void addBands(String eventID) {
@@ -100,41 +128,18 @@ public class DBfiller {
         Log.d(TAG, "Adding bands...");
 
         for (String[] row : bandsData) {
-            if ((row[0].equals(eventID)) && (row.length == 5)) {
+            if ((row[0].equals(eventID)) && (row.length >= 5)) {
                 Map<String, Object> band = new HashMap<>();
                 band.put("bandName", row[2]);
                 band.put("bandGenre", row[3]);
                 band.put("bandWebsite", row[4]);
 
-                bandsRef.document(row[1]).set(band)
+                bandsRef.document(row[1])
+                        .set(band)
                         .addOnSuccessListener(aVoid -> {
                             Log.d(TAG, "Band added: " + row[2]);
                         })
                         .addOnFailureListener(e -> Log.w(TAG, "Error adding band", e));
-            }
-        }
-    }
-
-    protected void addVenues(String eventID) {
-        CollectionReference venueRef = db.collection(EVENTS_COLLECTION_PATH)
-                .document(eventID)
-                .collection(VENUE_COLLECTION_PATH);
-
-        Log.d(TAG, "Adding venues...");
-
-        for (String[] row : venuesData) {
-            if ((row[0].equals(eventID)) && (row.length == 5)) {
-                Map<String, Object> venue = new HashMap<>();
-                venue.put("venueName", row[2]);
-                venue.put("venueEmail", row[3]);
-                venue.put("venueWebsite", row[4]);
-
-
-                venueRef.document(row[1]).set(venue)
-                        .addOnSuccessListener(aVoid -> {
-                            Log.d(TAG, "Venue added: " + row[2]);
-                        })
-                        .addOnFailureListener(e -> Log.w(TAG, "Error adding venue", e));
             }
         }
     }
