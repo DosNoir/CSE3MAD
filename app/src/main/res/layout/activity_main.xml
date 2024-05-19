@@ -19,7 +19,6 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
-
         <TextView
             android:id="@+id/textView"
             android:layout_width="match_parent"
@@ -27,7 +26,6 @@
             android:layout_alignParentTop="true"
             android:text="GIGLE"
             android:theme="@style/Gigle_Heading_Big_Theme"/>
-
         <com.google.android.material.button.MaterialButton
             android:id="@+id/btn_SignIn"
             android:layout_height="wrap_content"
@@ -37,6 +35,5 @@
             app:cornerRadius="5dp"
             android:theme="@style/Gigle_Btn_Theme"
             android:layout_alignParentBottom="true"/>
-
     </RelativeLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>

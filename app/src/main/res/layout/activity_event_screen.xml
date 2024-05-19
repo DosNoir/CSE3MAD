@@ -7,8 +7,6 @@
     android:layout_height="match_parent"
     tools:context=".HomeScreen"
     android:background="@drawable/background_main">
-
-
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
@@ -18,7 +16,6 @@
         app:layout_constrainedHeight="true"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
-
         <androidx.appcompat.widget.Toolbar
             android:id="@+id/toolbar"
             android:layout_width="match_parent"
@@ -45,41 +42,33 @@
                     android:background="@drawable/baseline_arrow_back_24"/>
             </RelativeLayout>
         </androidx.appcompat.widget.Toolbar>
-
         <RelativeLayout
-            android:layout_width="match_parent"
-            android:layout_height="365dp"
-            android:layout_margin="5dp">
-
-            <ImageView
-                android:id="@+id/event_image"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_gravity="top"
-                tools:srcCompat="@tools:sample/backgrounds/scenic" />
-        </RelativeLayout>
-
-        <RelativeLayout
-
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:orientation="vertical"
             android:layout_marginHorizontal="5dp">
-
+            <ImageView
+                android:id="@+id/event_image"
+                android:layout_marginHorizontal="5dp"
+                android:layout_width="match_parent"
+                android:layout_height="290dp"
+                android:layout_above="@id/event_heading"
+                tools:srcCompat="@tools:sample/backgrounds/scenic" />
             <!--Event Infomation-->
             <TextView
                 android:id="@+id/event_heading"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:gravity="top"
+                android:layout_above="@id/event_info"
                 android:text="Event Info"
                 android:background="@drawable/gigle_textbox_rounded_top"
                 android:theme="@style/Gigle_Body_Heading_Theme" />
-
             <TextView
                 android:id="@+id/event_info"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_below="@id/event_heading"
+                android:layout_above="@id/venue_info_heading"
                 android:text="Event info goes here..."
                 android:background="@drawable/gigle_textbox_rounder_bottom"
                 android:theme="@style/Gigle_Body_Theme" />
@@ -91,7 +80,7 @@
                 android:background="@drawable/gigle_textbox_rounded_top"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_below="@id/event_info"
+                android:layout_above="@id/venue_name"
                 android:text="Venue Infomnation"
                 android:theme="@style/Gigle_Body_Heading_Theme" />
 
@@ -100,7 +89,7 @@
                 android:layout_width="match_parent"
                 android:background="@drawable/gigle_textbox_rounded_middle"
                 android:layout_height="wrap_content"
-                android:layout_below="@id/venue_info_heading"
+              android:layout_above="@id/venue_website"
                 android:text="Venue Name"
                 android:theme="@style/Gigle_Body_Theme" />
             <TextView
@@ -108,7 +97,7 @@
                 android:layout_width="match_parent"
                 android:background="@drawable/gigle_textbox_rounded_middle"
                 android:layout_height="wrap_content"
-                android:layout_below="@id/venue_name"
+                android:layout_above="@id/venue_email"
                 android:text="Venue Website"
                 android:theme="@style/Gigle_Body_Theme" />
             <TextView
@@ -116,7 +105,7 @@
                 android:layout_width="match_parent"
                 android:background="@drawable/gigle_textbox_rounded_middle"
                 android:layout_height="wrap_content"
-                android:layout_below="@id/venue_website"
+                android:layout_above="@id/venue_phonenumber"
                 android:text="Venue Email"
                 android:theme="@style/Gigle_Body_Theme" />
             <TextView
@@ -124,12 +113,10 @@
                 android:layout_width="match_parent"
                 android:background="@drawable/gigle_textbox_rounder_bottom"
                 android:layout_height="wrap_content"
-                android:layout_below="@id/venue_email"
+                android:layout_above="@id/set_list_btn"
                 android:text="Venue Phone Number"
                 android:theme="@style/Gigle_Body_Theme" />
             <!-- -->
-
-
             <Button
                 android:id="@+id/set_list_btn"
                 android:layout_width="match_parent"
@@ -138,7 +125,6 @@
                 android:text="Set List"
                 android:theme="@style/Gigle_Btn_Theme"
                 app:cornerRadius="5dp" />
-
             <Button
                 android:id="@+id/reviews_btn"
                 android:layout_width="match_parent"
@@ -148,8 +134,5 @@
                 android:theme="@style/Gigle_Btn_Theme"
                 app:cornerRadius="5dp" />
         </RelativeLayout>
-
-
     </LinearLayout>
-
 </androidx.constraintlayout.widget.ConstraintLayout>

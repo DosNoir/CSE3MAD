@@ -15,14 +15,13 @@
         android:background="@drawable/rounded_yellow_square"
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
-
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:id="@+id/listName"
             android:text="Name"
             android:theme="@style/Gigle_Body_Heading_Theme"
-            android:textAlignment="textStart"></TextView>
+            android:textAlignment="textStart"/>
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -30,7 +29,6 @@
             android:text="SubHeading"
             android:theme="@style/Gigle_Body_Theme"
             android:textAlignment="textStart"
-            android:layout_below="@+id/listName"></TextView>
+            android:layout_below="@+id/listName"/>
     </RelativeLayout>
-
 </androidx.cardview.widget.CardView>

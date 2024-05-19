@@ -73,7 +73,6 @@
                 android:overScrollMode="always"
                 android:dividerHeight="15dp"
                 android:drawSelectorOnTop="true"
-                android:theme="@style/Gigle_Body_Theme"
                 tools:listitem="@layout/list_item" />
         </RelativeLayout>
     </LinearLayout>

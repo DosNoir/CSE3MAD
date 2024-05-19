@@ -7,7 +7,6 @@
     android:layout_height="match_parent"
     android:background="@drawable/background_main"
     tools:context=".SetListScreen">
-
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
@@ -17,7 +16,6 @@
         app:layout_constrainedHeight="true"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
-
         <androidx.appcompat.widget.Toolbar
             android:id="@+id/toolbar"
             android:layout_width="match_parent"
@@ -44,19 +42,18 @@
                     android:background="@drawable/baseline_arrow_back_24"/>
             </RelativeLayout>
         </androidx.appcompat.widget.Toolbar>
-
         <TextView
             android:id="@+id/textView2"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:theme="@style/Gigle_Heading_Theme"
             android:text="Set List" />
-
         <ListView
+            android:dividerHeight="15dp"
+            tools:listitem="@layout/list_item"
+            android:divider="@android:color/transparent"
             android:id="@+id/set_list_view"
             android:layout_width="match_parent"
             android:layout_height="match_parent" />
-
-
     </LinearLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>
