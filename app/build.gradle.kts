@@ -43,6 +43,7 @@ dependencies {
     implementation(libs.firebase.auth)
     implementation(libs.play.services.maps)
     implementation(libs.firebase.firestore)
+    implementation(libs.opencsv)
     testImplementation(libs.junit)
     androidTestImplementation(libs.ext.junit)
     androidTestImplementation(libs.espresso.core)

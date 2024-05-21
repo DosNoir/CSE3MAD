@@ -47,6 +47,8 @@ public class MainActivity extends AppCompatActivity {
     FirebaseAuth auth;
     GoogleSignInClient googleSignInClient;
 
+    DBfiller dbFiller;
+
     private final ActivityResultLauncher<Intent> activityResultLauncher = registerForActivityResult(new ActivityResultContracts.StartActivityForResult(), new ActivityResultCallback<ActivityResult>() {
         @Override
         public void onActivityResult(ActivityResult result) {

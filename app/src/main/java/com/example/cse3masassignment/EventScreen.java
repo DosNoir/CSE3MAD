@@ -51,6 +51,8 @@ import com.google.firebase.firestore.GeoPoint;
 import com.google.firebase.firestore.QueryDocumentSnapshot;
 import com.google.firebase.firestore.QuerySnapshot;
 
+import com.google.firebase.firestore.CollectionReference;
+
 import org.w3c.dom.Text;
 
 import java.util.HashMap;
@@ -126,7 +128,6 @@ public class EventScreen extends AppCompatActivity {
             }
         });
     }
-
 
     //Get updated selected event from database then once it has gotten it update the ui.
     //if you dont do it this way the application will crash because it will set the text views before it has completed, getting data from the data base
