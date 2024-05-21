@@ -100,9 +100,6 @@ public class MainActivity extends AppCompatActivity {
             Intent intent = googleSignInClient.getSignInIntent();
             activityResultLauncher.launch(intent);
         }
-
-        dbFiller = new DBfiller(MainActivity.this);
-        dbFiller.fill();
         
         Button btn_SignIn = findViewById(R.id.btn_SignIn);
         btn_SignIn.setOnClickListener(new View.OnClickListener() {
