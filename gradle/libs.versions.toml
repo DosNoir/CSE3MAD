@@ -13,6 +13,11 @@ playServicesMaps = "18.2.0"
 firebaseFirestore = "25.0.0"
 googleAndroidLibrariesMapsplatformSecretsGradlePlugin = "2.0.1"
 opencsv = "5.9"
+mockitoCore = "5.12.0"
+mockitoAndroid = "5.12.0"
+mockitoInline = "5.2.0"
+androidAll = "14-robolectric-10818077"
+robolectric = "4.12.2"
 firebasePerf = "21.0.0"
 googleFirebaseFirebasePerf = "1.4.2"
 googleGmsGoogleServices = "4.4.1"
@@ -31,6 +36,11 @@ firebase-auth = { group = "com.google.firebase", name = "firebase-auth", version
 play-services-maps = { group = "com.google.android.gms", name = "play-services-maps", version.ref = "playServicesMaps" }
 firebase-firestore = { group = "com.google.firebase", name = "firebase-firestore", version.ref = "firebaseFirestore" }
 opencsv = { group = "com.opencsv", name = "opencsv", version.ref = "opencsv" }
+mockito-core = { group = "org.mockito", name = "mockito-core", version.ref = "mockitoCore" }
+mockito-android = { group = "org.mockito", name = "mockito-android", version.ref = "mockitoAndroid" }
+mockito-inline = { group = "org.mockito", name = "mockito-inline", version.ref = "mockitoInline" }
+android-all = { group = "org.robolectric", name = "android-all", version.ref = "androidAll" }
+robolectric = { group = "org.robolectric", name = "robolectric", version.ref = "robolectric" }
 firebase-perf = { group = "com.google.firebase", name = "firebase-perf", version.ref = "firebasePerf" }
 rules = { group = "androidx.test", name = "rules", version.ref = "rules" }
 

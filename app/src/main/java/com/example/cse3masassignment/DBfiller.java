@@ -28,7 +28,7 @@ public class DBfiller {
     final private String VENUE_COLLECTION_PATH = "Venue";
     final private String BANDS_COLLECTION_PATH = "Bands";
 
-    private FirebaseFirestore db;
+    public FirebaseFirestore db;
     private Context context;
 
     private List<String[]> eventsData;
@@ -43,7 +43,7 @@ public class DBfiller {
         this.venuesData = readCSVFromAssets("venues.csv");
     }
 
-    protected List<String[]> readCSVFromAssets(String filename) {
+    public List<String[]> readCSVFromAssets(String filename) {
 
         List<String[]> data = null;
 
@@ -73,7 +73,7 @@ public class DBfiller {
             }
         }
     }
-    protected void addEvent(String[] row) {
+    public void addEvent(String[] row) {
         String eventID = row[1];
 
         // Define event data
