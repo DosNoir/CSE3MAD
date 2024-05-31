@@ -3,10 +3,11 @@ import static org.mockito.Mockito.*;
 
 import android.content.Context;
 import android.content.res.AssetManager;
-import android.util.Log;
+import android.content.res.Resources;
 
 import com.example.cse3masassignment.DBfiller;
 import com.google.android.gms.tasks.Tasks;
+import com.google.firebase.FirebaseApp;
 import com.google.firebase.firestore.CollectionReference;
 import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.FirebaseFirestore;
@@ -18,6 +19,7 @@ import org.mockito.ArgumentCaptor;
 import org.mockito.Mock;
 import org.mockito.MockitoAnnotations;
 import org.robolectric.RobolectricTestRunner;
+import org.robolectric.RuntimeEnvironment;
 import org.robolectric.annotation.Config;
 
 import org.junit.runner.RunWith;
@@ -38,6 +40,9 @@ public class DBfillerTest {
     AssetManager mockAssetManager;
 
     @Mock
+    Resources mockResources;
+
+    @Mock
     FirebaseFirestore mockDb;
 
     @Mock
@@ -50,10 +55,17 @@ public class DBfillerTest {
 
     @Before
     public void setUp() {
-        MockitoAnnotations.openMocks(this); // Initialize mocks
+        // Initialize mocks
+        MockitoAnnotations.openMocks(this);
+
+        // Mock FirebaseApp initialization
+        FirebaseApp.initializeApp(RuntimeEnvironment.application);
         when(mockContext.getAssets()).thenReturn(mockAssetManager);
+        when(mockContext.getResources()).thenReturn(mockResources);
+
+        // Inject the mocked Firestore instance
         dbfiller = new DBfiller(mockContext);
-        dbfiller.db = mockDb; // Inject the mocked Firestore instance
+        dbfiller.db = mockDb;
     }
 
     @Test
