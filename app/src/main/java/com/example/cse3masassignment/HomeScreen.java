@@ -54,7 +54,6 @@ import java.security.PrivateKey;
 import java.util.ArrayList;
 
 public class HomeScreen extends AppCompatActivity implements OnMapReadyCallback, GoogleMap.OnMarkerClickListener {
-    MapView mapView;
     GoogleMap googleMap;
     private final int FINE_PERMISSION_CODE = 1;
     Location currentLocation;
@@ -63,9 +62,7 @@ public class HomeScreen extends AppCompatActivity implements OnMapReadyCallback,
     private FirebaseFirestore db;
     private ArrayList<Event> events = new ArrayList<Event>();
     private String markerClickSelectionEventId;
-
     private ArrayList<Marker> myMarkers;
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -76,8 +73,6 @@ public class HomeScreen extends AppCompatActivity implements OnMapReadyCallback,
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom);
             return insets;
         });
-
-
         //Get The FireBase Auth
         auth = FirebaseAuth.getInstance();
         db = FirebaseFirestore.getInstance();
