@@ -2,6 +2,7 @@ plugins {
     alias(libs.plugins.androidApplication)
     id("com.google.gms.google-services")
     alias(libs.plugins.googleAndroidLibrariesMapsplatformSecretsGradlePlugin)
+    alias(libs.plugins.googleFirebaseFirebasePerf)
 
 }
 
@@ -44,6 +45,7 @@ dependencies {
     implementation(libs.play.services.maps)
     implementation(libs.firebase.firestore)
     implementation(libs.opencsv)
+    implementation(libs.firebase.perf)
     testImplementation(libs.junit)
     testImplementation(libs.mockito.core)
     testImplementation(libs.mockito.inline)
@@ -78,5 +80,7 @@ dependencies {
     implementation("com.github.bumptech.glide:glide:4.16.0")
     implementation("com.google.android.gms:play-services-auth:21.1.0")
     androidTestImplementation(libs.mockito.android)
+    implementation ("androidx.tracing:tracing:1.1.0")
+    androidTestImplementation(libs.rules)
 
 }

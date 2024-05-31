@@ -18,11 +18,15 @@ mockitoAndroid = "5.12.0"
 mockitoInline = "5.2.0"
 androidAll = "14-robolectric-10818077"
 robolectric = "4.12.2"
+firebasePerf = "21.0.0"
+googleFirebaseFirebasePerf = "1.4.2"
+googleGmsGoogleServices = "4.4.1"
+rules = "1.6.0-alpha01"
 
 [libraries]
 junit = { group = "junit", name = "junit", version.ref = "junit" }
-ext-junit = { group = "androidx.test.ext", name = "junit", version.ref = "junitVersion" }
-espresso-core = { group = "androidx.test.espresso", name = "espresso-core", version.ref = "espressoCore" }
+ext-junit = { group = "androidx.test.ext", name = "junit", version = "1.2.0-beta01" }
+espresso-core = { group = "androidx.test.espresso", name = "espresso-core", version = "3.6.0-beta01" }
 appcompat = { group = "androidx.appcompat", name = "appcompat", version.ref = "appcompat" }
 material = { group = "com.google.android.material", name = "material", version.ref = "material" }
 activity = { group = "androidx.activity", name = "activity", version.ref = "activity" }
@@ -37,8 +41,12 @@ mockito-android = { group = "org.mockito", name = "mockito-android", version.ref
 mockito-inline = { group = "org.mockito", name = "mockito-inline", version.ref = "mockitoInline" }
 android-all = { group = "org.robolectric", name = "android-all", version.ref = "androidAll" }
 robolectric = { group = "org.robolectric", name = "robolectric", version.ref = "robolectric" }
+firebase-perf = { group = "com.google.firebase", name = "firebase-perf", version.ref = "firebasePerf" }
+rules = { group = "androidx.test", name = "rules", version.ref = "rules" }
 
 [plugins]
 androidApplication = { id = "com.android.application", version.ref = "agp" }
 googleAndroidLibrariesMapsplatformSecretsGradlePlugin = { id = "com.google.android.libraries.mapsplatform.secrets-gradle-plugin", version.ref = "googleAndroidLibrariesMapsplatformSecretsGradlePlugin" }
+googleFirebaseFirebasePerf = { id = "com.google.firebase.firebase-perf", version.ref = "googleFirebaseFirebasePerf" }
+googleGmsGoogleServices = { id = "com.google.gms.google-services", version.ref = "googleGmsGoogleServices" }
 
