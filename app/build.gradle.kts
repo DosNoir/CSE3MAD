@@ -45,8 +45,13 @@ dependencies {
     implementation(libs.firebase.firestore)
     implementation(libs.opencsv)
     testImplementation(libs.junit)
+    testImplementation(libs.mockito.core)
+    testImplementation(libs.mockito.inline)
+    testImplementation(libs.android.all)
+    testImplementation(libs.robolectric)
     androidTestImplementation(libs.ext.junit)
     androidTestImplementation(libs.espresso.core)
+    androidTestImplementation(libs.mockito.core)
 
 
     implementation("androidx.credentials:credentials:1.3.0-alpha03")
@@ -72,5 +77,6 @@ dependencies {
     implementation("com.google.android.libraries.identity.googleid:googleid:1.1.0")
     implementation("com.github.bumptech.glide:glide:4.16.0")
     implementation("com.google.android.gms:play-services-auth:21.1.0")
+    androidTestImplementation(libs.mockito.android)
 
 }
